@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "The AWS CloudFormation template for testing stuff"
+Resources:
+  CloudFormationTestBucket:
+    Type: "AWS::S3::Bucket"
+
+Outputs:
+  CloudFormationTestBucketName:
+    Value: 
+      Ref: "CloudFormationTestBucket"
+    Description: Name of the bucket
+
+  CloudFormationTestBucketSecureURL:
+    Value: !Join 
+      - ''
+      - - 'https://'
+        - !GetAtt 
+          - CloudFormationTestBucket
+          - DomainName
+    Description: Secure URL of the bucket
